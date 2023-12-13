@@ -1,0 +1,107 @@
+mysql> CREATE TABLE Planets (
+    -> planet_id INT,
+    -> planet_name VARCHAR(50) NOT NULL,
+    -> diameter DECIMAL,
+    -> distance_from_sun DECIMAL NOT NULL
+    -> );
+Query OK, 0 rows affected (0,02 sec)
+
+mysql> DESCRIBE Planets;
++-------------------+---------------+------+-----+---------+-------+
+| Field             | Type          | Null | Key | Default | Extra |
++-------------------+---------------+------+-----+---------+-------+
+| planet_id         | int           | YES  |     | NULL    |       |
+| planet_name       | varchar(50)   | NO   |     | NULL    |       |
+| diameter          | decimal(10,0) | YES  |     | NULL    |       |
+| distance_from_sun | decimal(10,0) | NO   |     | NULL    |       |
++-------------------+---------------+------+-----+---------+-------+
+4 rows in set (0,00 sec)
+
+mysql> ALTER TABLE Planets MODIFY distance_from_sun DECIMAL NULL;
+Query OK, 0 rows affected (0,03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESCRIBE Planets;
++-------------------+---------------+------+-----+---------+-------+
+| Field             | Type          | Null | Key | Default | Extra |
++-------------------+---------------+------+-----+---------+-------+
+| planet_id         | int           | YES  |     | NULL    |       |
+| planet_name       | varchar(50)   | NO   |     | NULL    |       |
+| diameter          | decimal(10,0) | YES  |     | NULL    |       |
+| distance_from_sun | decimal(10,0) | YES  |     | NULL    |       |
++-------------------+---------------+------+-----+---------+-------+
+4 rows in set (0,00 sec)
+
+mysql> ALTER TABLE Planets MODIFY diameter DECIMAL NOT NULL;
+Query OK, 0 rows affected (0,04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESCRIBE Planets;
++-------------------+---------------+------+-----+---------+-------+
+| Field             | Type          | Null | Key | Default | Extra |
++-------------------+---------------+------+-----+---------+-------+
+| planet_id         | int           | YES  |     | NULL    |       |
+| planet_name       | varchar(50)   | NO   |     | NULL    |       |
+| diameter          | decimal(10,0) | NO   |     | NULL    |       |
+| distance_from_sun | decimal(10,0) | YES  |     | NULL    |       |
++-------------------+---------------+------+-----+---------+-------+
+4 rows in set (0,00 sec)
+
+mysql> CREATE TABLE Galaxies (
+    -> galaxy_id INT,
+    -> galaxy_name VARCHAR(50) NOT NULL,
+    -> description TEXT,
+    -> number_of_stars INT
+    -> );
+Query OK, 0 rows affected (0,02 sec)
+
+mysql> DESCRIBE Galaxies;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| galaxy_id       | int         | YES  |     | NULL    |       |
+| galaxy_name     | varchar(50) | NO   |     | NULL    |       |
+| description     | text        | YES  |     | NULL    |       |
+| number_of_stars | int         | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+4 rows in set (0,01 sec)
+
+mysql> SHOW TABLES;
++------------------------+
+| Tables_in_new_database |
++------------------------+
+| Books                  |
+| DiningSpots            |
+| Events                 |
+| Galaxies               |
+| Movies                 |
+| Planets                |
+| Students               |
+| Users                  |
+| Users2                 |
+| Users3                 |
++------------------------+
+10 rows in set (0,00 sec)
+
+mysql> DROP TABLE Galaxies;
+Query OK, 0 rows affected (0,02 sec)
+
+mysql> DESCRIBE Galaxies;
+ERROR 1146 (42S02): Table 'new_database.Galaxies' doesn't exist
+mysql> SHOW TABLES;
++------------------------+
+| Tables_in_new_database |
++------------------------+
+| Books                  |
+| DiningSpots            |
+| Events                 |
+| Movies                 |
+| Planets                |
+| Students               |
+| Users                  |
+| Users2                 |
+| Users3                 |
++------------------------+
+9 rows in set (0,00 sec)
+
+mysql> 
